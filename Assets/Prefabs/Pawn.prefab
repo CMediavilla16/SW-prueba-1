@@ -225,14 +225,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030e8cf0a15a6d84d957629cd62a886a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NeutralNPC
-  targetTransform: {fileID: 0}
+  movementType: 0
+  selectedSkin: 1
   animatorControllers:
   - {fileID: 9100000, guid: d0e6246148d828d46990ef246e4d9a1d, type: 2}
   - {fileID: 9100000, guid: ff28152173f0772488c6a6432dd5cccf, type: 2}
   - {fileID: 9100000, guid: 51a6052459215084fab5eee9b0e5adf7, type: 2}
   - {fileID: 9100000, guid: 4e4102f14afb0ef4b8147925b33d0967, type: 2}
-  selectedSkin: 3
-  movementType: 0
   pathPoints:
   - {fileID: 0}
   - {fileID: 0}

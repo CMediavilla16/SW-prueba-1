@@ -1,52 +1,15 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : NPC
 {
-
-    private Rigidbody2D rb2d;
-
-    public Transform targetTransform;
-
-    NavMeshAgent navMeshAgent;
-
-    Animator animator;
-
-    void Start()
+    protected override void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
-
-        animator = GetComponent<Animator>();
-
-        navMeshAgent = GetComponent<NavMeshAgent>();
-
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updateUpAxis = false;
-
+        base.Start();
     }
 
-
-
-    void Update()
+    protected override void Update()
     {
-        navMeshAgent.SetDestination(targetTransform.position);
-
-        AdjustAnimationsAndRotation();
-    }
-
-
-    public void AdjustAnimationsAndRotation()
-    {
-        bool isMoving = navMeshAgent.velocity.sqrMagnitude > 0.1f;
-        animator.SetBool("isRunning", isMoving);
-
-        if (navMeshAgent.desiredVelocity.x > 0.01f)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }else if(navMeshAgent.desiredVelocity.x < -0.01f)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-
+        base.Update();
     }
 }
