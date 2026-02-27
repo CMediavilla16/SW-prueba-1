@@ -1,0 +1,245 @@
+using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
+
+public class Player : MonoBehaviour
+{
+
+    public float speed = 5;
+
+    Rigidbody2D rb2d;
+    Vector2 movementInput;
+
+    private Animator animator;
+
+    private int currentHealth;
+    public int maxHealth = 100;
+
+    private bool gameIsPaused = false;
+
+    //si esta atacando o no
+    private bool isAttacking = false;
+    //para saber si nos podemos mover, no podriamos movernos si estamos atacando
+    private bool canMove = true;
+
+    //ultima direccion dd nos movemos
+    Vector2 lastMovementDir = Vector2.right;
+
+
+    Vector2 attackDir;
+    public float attackRange = 1.2f;
+    //para detectar layer de los objetos, label enemy para saber a que le pegamos
+    public LayerMask targetLayer;
+
+
+    void Start()
+    {
+        rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
+        currentHealth = maxHealth;
+        UIManager.Instance.UpdateHealth(currentHealth);
+    }
+
+    void Update()
+    {
+
+        if (isAttacking)
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
+        }
+
+
+        if (movementInput != Vector2.zero )
+        {
+            lastMovementDir = movementInput;
+        }
+
+        //posicion x del personaje
+        movementInput.x = Input.GetAxisRaw("Horizontal");
+        //posicion y del personaje
+        movementInput.y = Input.GetAxisRaw("Vertical");
+
+        //movimiento en todas las direcciones igual
+        movementInput = movementInput.normalized;
+
+        animator.SetFloat("Horizontal", Mathf.Abs(movementInput.x));
+        animator.SetFloat("Vertical", Mathf.Abs(movementInput.y));
+
+        CheckFlip();
+        OpenCloseInventory();
+        OpenClosePauseMenu();
+        Attack();
+
+    }
+
+
+    private void FixedUpdate()
+    {
+
+        if (canMove)
+        {
+            //velocidad a la que se mueve
+            rb2d.linearVelocity = movementInput * speed;
+        }
+        else
+        {
+            rb2d.linearVelocity = Vector2.zero;
+        }
+
+
+    }
+
+
+
+    void CheckFlip()
+    {
+        if (movementInput.x > 0 && transform.localScale.x < 0 || movementInput.x < 0 && transform.localScale.x > 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
+
+    }
+
+
+    void OpenCloseInventory()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            UIManager.Instance.OpenOrCloseInventory();
+        }
+
+
+
+    }
+
+
+    void OpenClosePauseMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (gameIsPaused)
+            {
+                UIManager.Instance.ResumeGame();
+                gameIsPaused = false;
+            }
+            else
+            {
+                UIManager.Instance.PauseGame();
+                gameIsPaused = true;
+            }
+        }
+    }
+
+
+    void Attack()
+    {
+
+        if (Input.GetMouseButtonDown(0) && !isAttacking)
+        {
+
+            //coge la direccion del ultimo movimiento
+            int dir = GetDirectionIndex(lastMovementDir);
+            attackDir = GetAttackInputDirection();
+            int attackDirection = GetDirectionIndex(attackDir);
+
+            animator.SetInteger("AttackDirection", attackDirection);
+
+
+
+
+
+            //para saber que ataque se usa
+            int randomIndex = Random.Range(0, 2);
+            animator.SetInteger("AttackIndex", randomIndex);
+            animator.SetTrigger("DoAttack");
+
+        }
+
+
+    }
+
+
+    public void StartAttack()
+    {
+        isAttacking = true;
+    }
+
+    public void EndAttack()
+    {
+        isAttacking = false;
+    }
+
+
+    Vector2 GetAttackInputDirection()
+    {
+        Vector2 inputDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        if (inputDir != Vector2.zero)
+        {
+            return inputDir;
+        }
+        else
+        {
+            if (transform.localScale.x > 0)
+            {
+                return Vector2.right;
+            }
+            else
+            {
+                return Vector2.left;
+            }
+        }
+    }
+
+    int GetDirectionIndex(Vector2 dir)
+    {
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            //si la condicion en x es mayor que 0, se devuelve 0, sino se devuelve 1 (saber si miramos a derecha o izq)
+            return dir.x > 0 ? 0 : 1;
+        }
+        else
+        {
+            // si la direccion es hacia arriba o hacia abajo
+            return dir.y > 0 ? 2 : 3;
+        }
+    }
+
+    public void DetectAndDamageTargets()
+    {
+        Vector2 attackPoint = (Vector2)transform.position + attackDir.normalized * attackRange * 0.1f;
+        Collider2D[] hitTargets = Physics2D.OverlapCircleAll(attackPoint, attackRange, targetLayer);
+
+        foreach (Collider2D target in hitTargets)
+        {
+            Vector2 hitDirection = target.transform.position - transform.position;
+            GameObject obj = target.gameObject;
+            int layer = obj.layer;
+
+            if (layer == LayerMask.NameToLayer("Enemy"))
+            {
+                obj.GetComponent<DamageReceiver>().ApplyDamage(1, true, false, hitDirection);
+            }
+            else if (layer == LayerMask.NameToLayer("Sheep"))
+            {
+                obj.GetComponent<DamageReceiver>().ApplyDamage(1, true, false, hitDirection);
+
+            }
+            else if (layer == LayerMask.NameToLayer("Tree"))
+            {
+                obj.GetComponent<DamageReceiver>().ApplyDamage(1, false, true, hitDirection);
+
+            }
+            else
+            {
+
+            }
+
+
+        }
+    }
+}
