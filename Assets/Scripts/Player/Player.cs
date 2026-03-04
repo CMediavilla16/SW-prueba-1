@@ -11,15 +11,14 @@ public class Player : MonoBehaviour
 
     private Animator animator;
 
-    private int currentHealth;
-    public int maxHealth = 100;
-
     private bool gameIsPaused = false;
 
     //si esta atacando o no
     private bool isAttacking = false;
+
+    [HideInInspector]
     //para saber si nos podemos mover, no podriamos movernos si estamos atacando
-    private bool canMove = true;
+    public bool canMove = true;
 
     //ultima direccion dd nos movemos
     Vector2 lastMovementDir = Vector2.right;
@@ -36,22 +35,10 @@ public class Player : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        currentHealth = maxHealth;
-        UIManager.Instance.UpdateHealth(currentHealth);
     }
 
     void Update()
     {
-
-        if (isAttacking)
-        {
-            canMove = false;
-        }
-        else
-        {
-            canMove = true;
-        }
-
 
         if (movementInput != Vector2.zero )
         {
@@ -85,11 +72,6 @@ public class Player : MonoBehaviour
             //velocidad a la que se mueve
             rb2d.linearVelocity = movementInput * speed;
         }
-        else
-        {
-            rb2d.linearVelocity = Vector2.zero;
-        }
-
 
     }
 
@@ -166,11 +148,14 @@ public class Player : MonoBehaviour
     public void StartAttack()
     {
         isAttacking = true;
+        rb2d.linearVelocity = Vector2.zero;
+        canMove = false;
     }
 
     public void EndAttack()
     {
         isAttacking = false;
+        canMove = true;
     }
 
 

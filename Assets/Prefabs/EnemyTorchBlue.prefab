@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 2192790802885864461}
   - component: {fileID: 2797436063132342599}
   - component: {fileID: 4900133450543163616}
-  - component: {fileID: 8227827025308940021}
   - component: {fileID: 7965835905967445460}
   - component: {fileID: 3490492196155662989}
   - component: {fileID: 4543473800603916313}
   - component: {fileID: 7930607241366814421}
+  - component: {fileID: 3617973571877662867}
   m_Layer: 6
   m_Name: EnemyTorchBlue
   m_TagString: Untagged
@@ -159,7 +159,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.000120699406, y: -0.013210326}
+  m_Offset: {x: -0.000120699406, y: -0.060232103}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -169,21 +169,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.569543, y: 0.9479969}
+  m_Size: {x: 0.569543, y: 0.7816123}
   m_EdgeRadius: 0
---- !u!114 &8227827025308940021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6901913255323047379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 402414c8f5c655f4b8a7c4efb24481ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  targetTransform: {fileID: 0}
 --- !u!114 &7965835905967445460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +183,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402414c8f5c655f4b8a7c4efb24481ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  targetTransform: {fileID: 0}
+  movementType: 0
+  selectedSkin: 2
+  animatorControllers: []
+  pathPoints: []
+  waitTimeInPoint: 3
+  movementRadius: 5
+  waitTimeRandom: 4
+  canChasePlayer: 1
+  chaseRadius: 6
+  stopDistanceFromPlayer: 1.5
+  canFlee: 0
+  fleeRange: 4
+  fleeDistance: 5
+  returnToOrigin: 1
+  maxDistanceFromOrigin: 1
+  attackRange: 1.5
+  stopDistance: 0.5
+  attackCooldown: 2
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!95 &3490492196155662989
 Animator:
   serializedVersion: 7
@@ -242,6 +249,22 @@ NavMeshAgent:
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7930607241366814421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901913255323047379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77f983b759b0d104297cdf2e2cb32c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageReceiver
+  maxHealth: 2
+  itemToDrop:
+  - {fileID: 2695114165683347591, guid: eef17ce73b67cb742856f711da062f96, type: 3}
+  forceImpulse: 5
+--- !u!114 &3617973571877662867
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
