@@ -264,6 +264,7 @@ MonoBehaviour:
   itemToDrop:
   - {fileID: 2695114165683347591, guid: eef17ce73b67cb742856f711da062f96, type: 3}
   forceImpulse: 5
+  xpOnDeath: 25
 --- !u!114 &3617973571877662867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,3 +281,4 @@ MonoBehaviour:
   itemToDrop:
   - {fileID: 2695114165683347591, guid: eef17ce73b67cb742856f711da062f96, type: 3}
   forceImpulse: 5
+  xpOnDeath: 73

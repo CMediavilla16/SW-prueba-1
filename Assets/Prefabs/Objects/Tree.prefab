@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1539463319005130617}
   - component: {fileID: 3995199996546232381}
   - component: {fileID: 2938409768024677199}
+  - component: {fileID: 7520270214794393148}
   m_Layer: 8
   m_Name: Tree
   m_TagString: Untagged
@@ -179,3 +180,22 @@ MonoBehaviour:
   - {fileID: 1508645571481948727, guid: dfd2ec684fb570c4b89a2187eb89d20b, type: 3}
   - {fileID: 6282695004694743378, guid: 4f0f0e6b3b535604487162465c0c740f, type: 3}
   forceImpulse: 5
+  xpOnDeath: 13
+--- !u!114 &7520270214794393148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254783084657131441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77f983b759b0d104297cdf2e2cb32c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageReceiver
+  maxHealth: 3
+  itemToDrop:
+  - {fileID: 1508645571481948727, guid: dfd2ec684fb570c4b89a2187eb89d20b, type: 3}
+  - {fileID: 6282695004694743378, guid: 4f0f0e6b3b535604487162465c0c740f, type: 3}
+  forceImpulse: 5
+  xpOnDeath: 25

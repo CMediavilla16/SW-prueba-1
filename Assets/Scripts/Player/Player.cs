@@ -26,14 +26,22 @@ public class Player : MonoBehaviour
 
     Vector2 attackDir;
     public float attackRange = 1.2f;
+    public int attackDamage = 1;
     //para detectar layer de los objetos, label enemy para saber a que le pegamos
     public LayerMask targetLayer;
+
+
+    private int xp = 0;
+    [HideInInspector]
+    public int currentLevel = 1;
 
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        UIManager.Instance.UpdatePlayerStats(xp, currentLevel, speed, attackDamage);
 
     }
 
@@ -59,6 +67,9 @@ public class Player : MonoBehaviour
         CheckFlip();
         OpenCloseInventory();
         OpenClosePauseMenu();
+        OpenCloseStatsPlayer();
+
+
         Attack();
 
     }
@@ -98,6 +109,15 @@ public class Player : MonoBehaviour
 
     }
 
+    void OpenCloseStatsPlayer()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            UIManager.Instance.OpenOrCloseStatsPlayer();
+        }
+
+
+    }
 
     void OpenClosePauseMenu()
     {
@@ -207,16 +227,16 @@ public class Player : MonoBehaviour
 
             if (layer == LayerMask.NameToLayer("Enemy"))
             {
-                obj.GetComponent<DamageReceiver>().ApplyDamage(1, true, false, hitDirection);
+                obj.GetComponent<DamageReceiver>().ApplyDamage(attackDamage, true, false, hitDirection);
             }
             else if (layer == LayerMask.NameToLayer("Sheep"))
             {
-                obj.GetComponent<DamageReceiver>().ApplyDamage(1, true, false, hitDirection);
+                obj.GetComponent<DamageReceiver>().ApplyDamage(attackDamage, true, false, hitDirection);
 
             }
             else if (layer == LayerMask.NameToLayer("Tree"))
             {
-                obj.GetComponent<DamageReceiver>().ApplyDamage(1, false, true, hitDirection);
+                obj.GetComponent<DamageReceiver>().ApplyDamage(attackDamage, false, true, hitDirection);
 
             }
             else
@@ -227,4 +247,63 @@ public class Player : MonoBehaviour
 
         }
     }
+
+
+    private void OnEnable()
+    {
+        DamageReceiver.OnTargetKilled += AddExp;
+    }
+
+    private void OnDisable()
+    {
+        DamageReceiver.OnTargetKilled -= AddExp;
+
+    }
+
+
+    public void AddExp(int xpAmount)
+    {
+        xp += xpAmount;
+
+        if (xp>100)
+        {
+            xp -= 100;
+
+            LevelUp();
+        }
+
+
+        UIManager.Instance.UpdatePlayerStats(xp, currentLevel, speed, attackDamage);
+
+    }
+
+
+    public void LevelUp()
+    {
+        currentLevel += 1;
+
+        switch (currentLevel)
+        {
+            case 2:
+                speed += 1;
+                attackDamage += 1;
+                GetComponent<DamageReceiverPlayer>().GainHealth(1);
+                break;
+
+            case 3:
+                speed += 1;
+                attackDamage += 1;
+                GetComponent<DamageReceiverPlayer>().GainHealth(1);
+                break;
+
+
+            default:
+                break;
+        }
+
+    }
+
+
+
+
 }

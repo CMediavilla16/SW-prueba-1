@@ -257,3 +257,4 @@ MonoBehaviour:
   itemToDrop:
   - {fileID: 6273691833232044738, guid: 1331bc911b716f24fa839fed1fff9b15, type: 3}
   forceImpulse: 5
+  xpOnDeath: 33

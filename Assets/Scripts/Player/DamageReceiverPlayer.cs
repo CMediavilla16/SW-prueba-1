@@ -3,7 +3,7 @@ using UnityEngine;
 public class DamageReceiverPlayer : MonoBehaviour
 {
     [Header("Stats")]
-    public int maxHealth = 1;
+    public int maxHealth = 5;
     private int currentHealth;
 
 
@@ -16,7 +16,7 @@ public class DamageReceiverPlayer : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
-        UIManager.Instance.UpdateHealth(currentHealth);
+        UIManager.Instance.UpdateHealth(currentHealth, maxHealth);
 
     }
 
@@ -25,7 +25,7 @@ public class DamageReceiverPlayer : MonoBehaviour
     {
         currentHealth -= amount;
 
-        UIManager.Instance.UpdateHealth(currentHealth);
+        UIManager.Instance.UpdateHealth(currentHealth, maxHealth);
 
         if (applyForceOrNot)
         {
@@ -51,6 +51,15 @@ public class DamageReceiverPlayer : MonoBehaviour
     {
         GetComponent<Player>().canMove = true;
     }
+
+
+    public void GainHealth(int healthAmount)
+    {
+        maxHealth += healthAmount;
+        currentHealth = maxHealth;
+        UIManager.Instance.UpdateHealth(currentHealth, maxHealth);
+    }
+
 
     void Die()
     {

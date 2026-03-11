@@ -1,17 +1,26 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
 
     public GameObject inventory;
     public GameObject pauseMenu;
+    public GameObject statsPanel;
 
     public TMP_Text moneyCountText;
     public TMP_Text meatCountText;
     public TMP_Text woodCountText;
 
     public TMP_Text healthText;
+
+
+    public TMP_Text maxHealthText;
+    public TMP_Text levelText;
+    public TMP_Text attackDamageText;
+    public TMP_Text speedText;
+    public Slider xpSlider;
 
     
     public static UIManager Instance {get; private set;}
@@ -32,7 +41,21 @@ public class UIManager : MonoBehaviour
         inventory.SetActive(!inventory.activeSelf);
     }
 
+    public void OpenOrCloseStatsPlayer()
+    {
 
+        if (statsPanel.activeSelf == true)
+        {
+            statsPanel.GetComponent<Animator>().Play("Close");
+        }
+        else
+        {
+            statsPanel.SetActive(true);
+            statsPanel.GetComponent<Animator>().Play("Open");
+
+        }
+
+    }
 
     public void UpdateMoney(int value)
     {
@@ -50,11 +73,19 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void UpdateHealth(int hpValue)
+    public void UpdateHealth(int hpValue, int maxHealthValue)
     {
         healthText.text = hpValue.ToString();
+        maxHealthText.text = maxHealthValue.ToString();
     }
 
+    public void UpdatePlayerStats(int xpValue, int levelValue, float speedValue, int attackDamageValue)
+    {
+        xpSlider.value = xpValue;
+        levelText.text = levelValue.ToString();
+        speedText.text = speedValue.ToString();
+        attackDamageText.text = attackDamageValue.ToString();
+    }
 
 
     public void PauseGame()
