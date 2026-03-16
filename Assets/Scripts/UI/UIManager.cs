@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class UIManager : MonoBehaviour
     public GameObject inventory;
     public GameObject pauseMenu;
     public GameObject statsPanel;
+    public GameObject pauseMenuButton;
+    public GameObject questPanel;
 
     public TMP_Text moneyCountText;
     public TMP_Text meatCountText;
@@ -21,6 +24,12 @@ public class UIManager : MonoBehaviour
     public TMP_Text attackDamageText;
     public TMP_Text speedText;
     public Slider xpSlider;
+
+    public TMP_Text requiredMoneyCountText;
+    public TMP_Text requiredWoodCountText;
+    public TMP_Text requiredMeatCountText;
+    public TMP_Text questText;
+
 
     
     public static UIManager Instance {get; private set;}
@@ -91,14 +100,34 @@ public class UIManager : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        pauseMenuButton.SetActive(false);
         Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        pauseMenuButton.SetActive(true);
         Time.timeScale = 1;
     }
 
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
+
+    }
+
+
+    public void ShowQuestPanel()
+    {
+        questPanel.SetActive(true);
+    }
+
+    public void HideQuestPanel()
+    {
+        questPanel.SetActive(false);
+    }
 
 }
