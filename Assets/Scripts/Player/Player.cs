@@ -75,7 +75,6 @@ public class Player : MonoBehaviour
         OpenClosePauseMenu();
         OpenCloseStatsPlayer();
 
-
         Attack();
 
     }
@@ -334,5 +333,7 @@ public class Player : MonoBehaviour
 
         }
     }
+
+
 
 }
