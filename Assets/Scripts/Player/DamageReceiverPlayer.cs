@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DamageReceiverPlayer : MonoBehaviour
 {
@@ -63,7 +64,17 @@ public class DamageReceiverPlayer : MonoBehaviour
 
     void Die()
     {
+        GetComponent<Player>().enabled = false;
+        animator.SetTrigger("Die");
+        UIManager.Instance.DiePanelAnimation();
+        Invoke("ResetLevel", 30);
+    }
 
+
+    public void ResetLevel()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
 }

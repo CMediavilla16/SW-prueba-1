@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject statsPanel;
     public GameObject pauseMenuButton;
     public GameObject questPanel;
+    public GameObject diePanel;
 
     public TMP_Text moneyCountText;
     public TMP_Text meatCountText;
@@ -139,6 +140,12 @@ public class UIManager : MonoBehaviour
 
         questText.text = questName.ToString();
 
+    }
+
+
+    public void DiePanelAnimation()
+    {
+        diePanel.SetActive(true);
     }
 
 
