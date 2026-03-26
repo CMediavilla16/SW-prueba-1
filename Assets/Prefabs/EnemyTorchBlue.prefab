@@ -352,11 +352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f983b759b0d104297cdf2e2cb32c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageReceiver
-  maxHealth: 2
+  maxHealth: 3
   itemToDrop:
   - {fileID: 2695114165683347591, guid: eef17ce73b67cb742856f711da062f96, type: 3}
   forceImpulse: 5
-  xpOnDeath: 25
+  xpOnDeath: 75
 --- !u!114 &3617973571877662867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,12 +364,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6901913255323047379}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77f983b759b0d104297cdf2e2cb32c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageReceiver
-  maxHealth: 2
+  maxHealth: 3
   itemToDrop:
   - {fileID: 2695114165683347591, guid: eef17ce73b67cb742856f711da062f96, type: 3}
   forceImpulse: 5

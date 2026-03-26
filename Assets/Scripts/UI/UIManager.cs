@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenuButton;
     public GameObject questPanel;
     public GameObject diePanel;
+    
+    public GameObject dialoguePanel;
+    public TMP_Text dialogueText;
 
     public TMP_Text moneyCountText;
     public TMP_Text meatCountText;
@@ -146,6 +149,18 @@ public class UIManager : MonoBehaviour
     public void DiePanelAnimation()
     {
         diePanel.SetActive(true);
+    }
+
+
+    public void ShowDialogue(string message)
+    {
+        dialogueText.text = message; // Cambia el texto por el que le pasemos
+        dialoguePanel.SetActive(true); // Enciende el panel
+    }
+
+    public void HideDialogue()
+    {
+        dialoguePanel.SetActive(false); // Apaga el panel
     }
 
 

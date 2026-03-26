@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class Player : MonoBehaviour
 {
 
-    public float speed = 5;
+    public float speed = 3;
 
     Rigidbody2D rb2d;
     Vector2 movementInput;
@@ -32,9 +32,9 @@ public class Player : MonoBehaviour
     public LayerMask targetLayer;
 
 
-    private int xp = 0;
+    private int xp = 1;
     [HideInInspector]
-    public int currentLevel = 1;
+    public int currentLevel = 0;
 
 
     [Header("Skin")]
@@ -297,8 +297,53 @@ public class Player : MonoBehaviour
 
             case 3:
                 speed += 1;
+                break;
+
+            case 4:
                 attackDamage += 1;
+                break;
+
+            case 5:
+                GetComponent<DamageReceiverPlayer>().GainHealth(2);
+                break;
+
+            case 6:
+                speed += 1;
+                break;
+
+            case 7:
+
                 GetComponent<DamageReceiverPlayer>().GainHealth(1);
+                break;
+
+            case 8:
+                speed += 1;
+                break;
+
+
+            case 9:
+                
+                attackDamage += 1;
+                
+                break;
+
+            case 10:
+                GetComponent<DamageReceiverPlayer>().GainHealth(5);
+                break;
+
+            case 11:
+                GetComponent<DamageReceiverPlayer>().GainHealth(5);
+                break;
+
+            case 12:
+                speed += 1;
+                
+                break;
+
+            case 13:
+                speed += 1;
+                attackDamage += 1;
+                GetComponent<DamageReceiverPlayer>().GainHealth(5);
                 break;
 
 
