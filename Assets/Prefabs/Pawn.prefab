@@ -157,7 +157,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.000120699406, y: -0.013210326}
+  m_Offset: {x: -0.000120699406, y: 0.044359624}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -167,7 +167,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.569543, y: 0.9479969}
+  m_Size: {x: 0.569543, y: 0.832857}
   m_EdgeRadius: 0
 --- !u!95 &4133656736718652227
 Animator:
@@ -236,3 +236,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   waitTimeInPoint: 6.86
+  movementRadius: 5
+  waitTimeRandom: 4
+  canChasePlayer: 0
+  chaseRadius: 6
+  stopDistanceFromPlayer: 1.5
+  canFlee: 0
+  fleeRange: 4
+  fleeDistance: 5
+  returnToOrigin: 0
+  maxDistanceFromOrigin: 1

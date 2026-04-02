@@ -14,12 +14,13 @@ GameObject:
   - component: {fileID: 3995199996546232381}
   - component: {fileID: 2938409768024677199}
   - component: {fileID: 7520270214794393148}
+  - component: {fileID: 1497533616400590912}
   m_Layer: 8
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5954050991517768048
 Transform:
@@ -199,3 +200,19 @@ MonoBehaviour:
   - {fileID: 6282695004694743378, guid: 4f0f0e6b3b535604487162465c0c740f, type: 3}
   forceImpulse: 5
   xpOnDeath: 25
+--- !u!114 &1497533616400590912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254783084657131441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NavMeshPlus::NavMeshPlus.Components.NavMeshModifier
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
