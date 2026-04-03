@@ -283,8 +283,8 @@ MonoBehaviour:
   movementRadius: 5
   waitTimeRandom: 4
   canChasePlayer: 1
-  chaseRadius: 6
-  stopDistanceFromPlayer: 1.5
+  chaseRadius: 4.8
+  stopDistanceFromPlayer: 1.34
   canFlee: 0
   fleeRange: 4
   fleeDistance: 5

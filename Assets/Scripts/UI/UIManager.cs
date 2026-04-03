@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     public GameObject dialoguePanel;
     public TMP_Text dialogueText;
 
+    public GameObject dialoguePanelEnemy;
+    public TMP_Text dialogueTextEnemy;
+
     public TMP_Text moneyCountText;
     public TMP_Text meatCountText;
     public TMP_Text woodCountText;
@@ -163,5 +166,17 @@ public class UIManager : MonoBehaviour
         dialoguePanel.SetActive(false); // Apaga el panel
     }
 
+
+
+    public void ShowDialogueEnemy(string message2)
+    {
+        dialogueTextEnemy.text = message2; // Cambia el texto por el que le pasemos
+        dialoguePanelEnemy.SetActive(true); // Enciende el panel
+    }
+
+    public void HideDialogueEnemy()
+    {
+        dialoguePanelEnemy.SetActive(false); // Apaga el panel
+    }
 
 }
