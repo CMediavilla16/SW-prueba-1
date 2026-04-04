@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenuButton;
     public GameObject questPanel;
     public GameObject diePanel;
+    public GameObject storyPanel;
+    public GameObject startStoryText;
+    public GameObject endStoryText;
     
     public GameObject dialoguePanel;
     public TMP_Text dialogueText;
@@ -178,5 +181,36 @@ public class UIManager : MonoBehaviour
     {
         dialoguePanelEnemy.SetActive(false); // Apaga el panel
     }
+
+
+
+    public void StartStory()
+    {
+        startStoryText.SetActive(true);
+        endStoryText.SetActive(false);
+        storyPanel.SetActive(true);
+        Invoke("CloseStory", 10);
+    }
+
+    public void EndStory()
+    {
+        startStoryText.SetActive(false);
+        endStoryText.SetActive(true);
+        storyPanel.SetActive(true);
+        Invoke("CloseStoryAndGoToMainMenu", 10);
+    }
+
+
+    public void CloseStory()
+    {
+
+        storyPanel.SetActive(false);
+    }
+
+    public void CloseStoryAndGoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 
 }

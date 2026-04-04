@@ -67,7 +67,7 @@ public class DamageReceiverPlayer : MonoBehaviour
         GetComponent<Player>().enabled = false;
         animator.SetTrigger("Die");
         UIManager.Instance.DiePanelAnimation();
-        Invoke("ResetLevel", 15);
+        Invoke("ResetLevel", 10);
     }
 
 

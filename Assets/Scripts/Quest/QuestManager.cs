@@ -14,6 +14,7 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
         player = FindFirstObjectByType<PlayerResourceCollector>();
+        UIManager.Instance.StartStory();
     }
 
 
@@ -80,6 +81,7 @@ public class QuestManager : MonoBehaviour
         else
         {
             Debug.Log("Todas las misiones completadas");
+            UIManager.Instance.EndStory();
         }
 
     }
