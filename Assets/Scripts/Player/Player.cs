@@ -58,9 +58,9 @@ public class Player : MonoBehaviour
         }
 
         //posicion x del personaje
-        movementInput.x = Input.GetAxisRaw("Horizontal");
+        movementInput.x = SimpleInput.GetAxisRaw("Horizontal");
         //posicion y del personaje
-        movementInput.y = Input.GetAxisRaw("Vertical");
+        movementInput.y = SimpleInput.GetAxisRaw("Vertical");
 
         //movimiento en todas las direcciones igual
         movementInput = movementInput.normalized;
@@ -73,7 +73,14 @@ public class Player : MonoBehaviour
         OpenClosePauseMenu();
         OpenCloseStatsPlayer();
 
-        Attack();
+#if UNITY_EDITOR || UNITY_STANDALONE
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Attack();
+
+        }
+#endif
 
     }
 
@@ -140,10 +147,10 @@ public class Player : MonoBehaviour
     }
 
 
-    void Attack()
+    public void Attack()
     {
 
-        if (Input.GetMouseButtonDown(0) && !isAttacking)
+        if (!isAttacking)
         {
 
             //coge la direccion del ultimo movimiento
@@ -184,7 +191,7 @@ public class Player : MonoBehaviour
 
     Vector2 GetAttackInputDirection()
     {
-        Vector2 inputDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector2 inputDir = new Vector2(SimpleInput.GetAxisRaw("Horizontal"), SimpleInput.GetAxisRaw("Vertical"));
 
         if (inputDir != Vector2.zero)
         {

@@ -9,8 +9,10 @@ public class UIManager : MonoBehaviour
     public GameObject inventory;
     public GameObject pauseMenu;
     public GameObject statsPanel;
+    public GameObject statsPanelButton;
     public GameObject pauseMenuButton;
     public GameObject questPanel;
+    public GameObject questPanelButton;
     public GameObject diePanel;
     public GameObject storyPanel;
     public GameObject startStoryText;
@@ -66,12 +68,13 @@ public class UIManager : MonoBehaviour
         if (statsPanel.activeSelf == true)
         {
             statsPanel.GetComponent<Animator>().Play("Close");
+            statsPanelButton.SetActive(true);
         }
         else
         {
             statsPanel.SetActive(true);
             statsPanel.GetComponent<Animator>().Play("Open");
-
+            statsPanelButton.SetActive(false);
         }
 
     }
@@ -133,11 +136,13 @@ public class UIManager : MonoBehaviour
     public void ShowQuestPanel()
     {
         questPanel.SetActive(true);
+        questPanelButton.SetActive(false);
     }
 
     public void HideQuestPanel()
     {
         questPanel.SetActive(false);
+        questPanelButton.SetActive(true);
     }
 
 
@@ -211,6 +216,8 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+
 
 
 }
