@@ -17,6 +17,7 @@ public class Enemy : NPC
     private Vector2 playerDirection;
 
 
+
     protected override void Update()
     {
         base.Update();

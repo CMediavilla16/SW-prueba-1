@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,7 +16,7 @@ public class NPC : MonoBehaviour
 
     [Header("Skin")]
     public NPCSkin selectedSkin;
-    public AnimatorController[] animatorControllers;
+    public RuntimeAnimatorController[] animatorControllers;
     public enum NPCSkin
     {
         Blue,
@@ -79,7 +78,6 @@ public class NPC : MonoBehaviour
         originPosition = transform.position;
 
         ResumeOriginalBehavior();
-
 
 
     }

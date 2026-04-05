@@ -198,7 +198,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6901913255323047379}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -289,7 +289,7 @@ MonoBehaviour:
   fleeRange: 4
   fleeDistance: 5
   returnToOrigin: 1
-  maxDistanceFromOrigin: 1
+  maxDistanceFromOrigin: 17.3
   attackRange: 1.5
   stopDistance: 0.5
   attackCooldown: 2

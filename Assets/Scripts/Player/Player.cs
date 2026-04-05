@@ -1,6 +1,4 @@
-using UnityEditor.Animations;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
 {
@@ -39,7 +37,7 @@ public class Player : MonoBehaviour
 
     [Header("Skin")]
     public NPCSkin selectedSkin;
-    public AnimatorController[] animatorControllers;
+    public RuntimeAnimatorController[] animatorControllers;
     public enum NPCSkin{Blue,Purple,Red,Yellow}
 
     void Start()
