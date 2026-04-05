@@ -289,12 +289,10 @@ public class Player : MonoBehaviour
         {
             case 2:
                 speed += 1;
-                attackDamage += 1;
-                GetComponent<DamageReceiverPlayer>().GainHealth(1);
                 break;
 
             case 3:
-                speed += 1;
+                GetComponent<DamageReceiverPlayer>().GainHealth(1);
                 break;
 
             case 4:
@@ -302,7 +300,7 @@ public class Player : MonoBehaviour
                 break;
 
             case 5:
-                GetComponent<DamageReceiverPlayer>().GainHealth(2);
+                GetComponent<DamageReceiverPlayer>().GainHealth(1);
                 break;
 
             case 6:
@@ -315,7 +313,7 @@ public class Player : MonoBehaviour
                 break;
 
             case 8:
-                speed += 1;
+                GetComponent<DamageReceiverPlayer>().GainHealth(0);
                 break;
 
 
@@ -326,11 +324,11 @@ public class Player : MonoBehaviour
                 break;
 
             case 10:
-                GetComponent<DamageReceiverPlayer>().GainHealth(5);
+                GetComponent<DamageReceiverPlayer>().GainHealth(1);
                 break;
 
             case 11:
-                GetComponent<DamageReceiverPlayer>().GainHealth(5);
+                GetComponent<DamageReceiverPlayer>().GainHealth(1);
                 break;
 
             case 12:
@@ -339,9 +337,11 @@ public class Player : MonoBehaviour
                 break;
 
             case 13:
-                speed += 1;
+                GetComponent<DamageReceiverPlayer>().GainHealth(3);
+                break;
+
+            case 14:
                 attackDamage += 1;
-                GetComponent<DamageReceiverPlayer>().GainHealth(5);
                 break;
 
 

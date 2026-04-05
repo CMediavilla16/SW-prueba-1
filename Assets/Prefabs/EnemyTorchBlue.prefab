@@ -277,7 +277,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   movementType: 0
   selectedSkin: 2
-  animatorControllers: []
+  animatorControllers:
+  - {fileID: 9100000, guid: 83a5e82b435a23042a145cf44da5dbc2, type: 2}
+  - {fileID: 9100000, guid: d5f60a5db6f7fa64da6a7fe3cfc9f562, type: 2}
+  - {fileID: 9100000, guid: b9e7005fb8f5a8843b9ca04a42a1dbc5, type: 2}
+  - {fileID: 9100000, guid: 16bb6b77594d05d4890901ce8747c381, type: 2}
   pathPoints: []
   waitTimeInPoint: 3
   movementRadius: 5
@@ -356,7 +360,7 @@ MonoBehaviour:
   itemToDrop:
   - {fileID: 2695114165683347591, guid: eef17ce73b67cb742856f711da062f96, type: 3}
   forceImpulse: 5
-  xpOnDeath: 75
+  xpOnDeath: 53
 --- !u!114 &3617973571877662867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,4 +377,4 @@ MonoBehaviour:
   itemToDrop:
   - {fileID: 2695114165683347591, guid: eef17ce73b67cb742856f711da062f96, type: 3}
   forceImpulse: 5
-  xpOnDeath: 73
+  xpOnDeath: 53
