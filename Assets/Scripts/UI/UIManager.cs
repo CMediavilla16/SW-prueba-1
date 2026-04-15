@@ -59,12 +59,19 @@ public class UIManager : MonoBehaviour
 
     public void OpenOrCloseInventory()
     {
+        if (SFXManager.instance != null)
+        {
+            SFXManager.instance.PlayStandardSound(SFXManager.SoundType.buttonClick);
+        }
         inventory.SetActive(!inventory.activeSelf);
     }
 
     public void OpenOrCloseStatsPlayer()
     {
-
+        if (SFXManager.instance != null)
+        {
+            SFXManager.instance.PlayStandardSound(SFXManager.SoundType.buttonClick);
+        }
         if (statsPanel.activeSelf == true)
         {
             statsPanel.GetComponent<Animator>().Play("Close");
@@ -112,6 +119,10 @@ public class UIManager : MonoBehaviour
 
     public void PauseGame()
     {
+        if (SFXManager.instance != null)
+        {
+            SFXManager.instance.PlayStandardSound(SFXManager.SoundType.buttonClick);
+        }
         pauseMenu.SetActive(true);
         pauseMenuButton.SetActive(false);
         Time.timeScale = 0;
@@ -119,6 +130,10 @@ public class UIManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        if (SFXManager.instance != null)
+        {
+            SFXManager.instance.PlayStandardSound(SFXManager.SoundType.buttonClick);
+        }
         pauseMenu.SetActive(false);
         pauseMenuButton.SetActive(true);
         Time.timeScale = 1;
@@ -127,6 +142,10 @@ public class UIManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        if (SFXManager.instance != null)
+        {
+            SFXManager.instance.PlayStandardSound(SFXManager.SoundType.buttonClick);
+        }
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
 
@@ -159,6 +178,10 @@ public class UIManager : MonoBehaviour
 
     public void DiePanelAnimation()
     {
+        if (SFXManager.instance != null)
+        {
+            SFXManager.instance.PlayStandardSound(SFXManager.SoundType.gameOver);
+        }
         diePanel.SetActive(true);
     }
 

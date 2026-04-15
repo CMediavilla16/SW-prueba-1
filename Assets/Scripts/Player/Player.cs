@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
 
     Vector2 attackDir;
-    public float attackRange = 1.2f;
+    public float attackRange = 1.2f;    
     public int attackDamage = 1;
     //para detectar layer de los objetos, label enemy para saber a que le pegamos
     public LayerMask targetLayer;
@@ -228,6 +228,14 @@ public class Player : MonoBehaviour
     {
         Vector2 attackPoint = (Vector2)transform.position + attackDir.normalized * attackRange * 0.1f;
         Collider2D[] hitTargets = Physics2D.OverlapCircleAll(attackPoint, attackRange, targetLayer);
+        if(hitTargets.Length == 0)
+    {
+            if (SFXManager.instance != null)
+            {
+                SFXManager.instance.PlayStandardSound(SFXManager.SoundType.swordNoHit);
+            }
+            return;
+        }
 
         foreach (Collider2D target in hitTargets)
         {
@@ -238,20 +246,32 @@ public class Player : MonoBehaviour
             if (layer == LayerMask.NameToLayer("Enemy"))
             {
                 obj.GetComponent<DamageReceiver>().ApplyDamage(attackDamage, true, false, hitDirection);
+                if (SFXManager.instance != null)
+                {
+                    SFXManager.instance.PlayStandardSound(SFXManager.SoundType.swordHit);
+                }
             }
             else if (layer == LayerMask.NameToLayer("Sheep"))
             {
                 obj.GetComponent<DamageReceiver>().ApplyDamage(attackDamage, true, false, hitDirection);
+                if (SFXManager.instance != null)
+                {
+                    SFXManager.instance.PlayStandardSound(SFXManager.SoundType.swordHit);
+                }
 
             }
             else if (layer == LayerMask.NameToLayer("Tree"))
             {
                 obj.GetComponent<DamageReceiver>().ApplyDamage(attackDamage, false, true, hitDirection);
+                if (SFXManager.instance != null)
+                {
+                    SFXManager.instance.PlayStandardSound(SFXManager.SoundType.swordHit);
+                }
 
             }
             else
             {
-
+               
             }
 
 
