@@ -14,3 +14,8 @@
 * 💬 **Sistema de Diálogos:** Interactúa con NPCs y enemigos a través de paneles de texto y descubre la historia (Story Panels).
 * 🎒 **Inventario e Interfaz (UI):** Menús de pausa, panel de estadísticas en tiempo real y UI responsiva (Canvas Scaler) adaptada a diferentes resoluciones de pantalla.
 * 📱 **Optimizado para Móviles:** Controles e interfaz diseñados para ser jugados en dispositivos Android.
+
+
+Francisco De Paula Mediavilla García
+Pablo Aguza Barragán
+Rosmery Marculli
